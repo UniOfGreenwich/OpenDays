@@ -14,15 +14,7 @@ This document will provide a instructions on how to use the oscilloscope, to rea
 
 5. Calculate the speed of the transmitted signal
 
-6. Reset the Arduino and do it again as many times as you like to ge different signals
-
----
-
-## Deferral/Referral Students
-
-  > If you are are a deferral or referral student you will have access to click this, [RANDOM_SIGNALS](./figures/signal/source/random_signals.zip), to obtain five pre-captured signals. 
-  >
-  > Any problems please contact the module leader! 
+6. Reset the Arduino and do it again as many times as you like to get different signals
 
 --- 
 
