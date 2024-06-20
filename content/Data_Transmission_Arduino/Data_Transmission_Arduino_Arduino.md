@@ -1,4 +1,4 @@
-# Open Day 2023
+# Data Communication over Serial
 
 This document will provide a instructions on how to use the oscilloscope, to read the electrical signal that is being transimitted from the Arduino Uno development board out of the Tx pin.
 
