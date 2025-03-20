@@ -4,19 +4,17 @@
 <tr>
 <td>
 
-This execrise book can be accessed from your mobile or tablet too:
-- [https://cccu-uk.github.io/TeachingMaterial/OpenDays/](https://cccu-uk.github.io/TeachingMaterial/OpenDays/)
+The mdBook accessed outside of blackboard and is mobile and tablet friendly. :
+- [https://uniofgreenwich.github.io/opendays/](https://uniofgreenwich.github.io/opendays)
 - Or scan the QR code on the right:
 </td>
 <td>
 
-
-<img src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2FTeachingMaterial.github.io%2FOpenDays%2F&chs=180x180&choe=UTF-8&chld=L|2' rel='nofollow' alt='qr code'><a href='https://www.qr-code-generator.com' border='0' style='cursor:default'  rel='nofollow' ></a>
+![](./mdbook-qr-code.png)
 
 </td>
 </tr>
 </table>
-
 
 ## Accessibility and Navigation
 

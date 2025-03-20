@@ -3,6 +3,9 @@
 This document will provide a instructions on how to use the oscilloscope, to read the electrical signal that is being transimitted from the Arduino Uno development board out of the Tx pin.
 
 ---
+
+~~~admonish important
+
 **As a reminder, you are to:**
 1. Interrogate the signal displayed on the oscilloscope so that you translate the electrical signal to a series of 1's and 0's
    
@@ -16,6 +19,8 @@ This document will provide a instructions on how to use the oscilloscope, to rea
 
 6. Reset the Arduino and do it again as many times as you like to get different signals
 
+~~~
+
 --- 
 
 ## Code Snippet
@@ -24,12 +29,19 @@ So you can see what is going on under the hood, the snippet of code below demons
 
 You can see firstly that a random baudrate is selected by creating a random seed from the analogue pin 2 of the Arduino.
 
+
+~~~admonish code
+
 ```c
 randomSeed (analogRead(2));
 Serial.begin(baudRate[random(0,3)]);
 ```
 
+~~~
+
 ... Next a random symbol is picked from the printable ASCII table.
+
+~~~admonish code
 
 ```c
 randomSeed (analogRead(5));
@@ -38,7 +50,11 @@ int selectedPos = random(0,94);
 char symbol = (char)(startingPos + selectedPos);
 ```
 
+~~~
+
 Finally, the symbol is sent to the Tx pin every 2 secs until you reset the Arduino, which then starts the whole sequence off again.
+
+~~~admonish code
 
 ```c
 while(true)
@@ -47,6 +63,9 @@ while(true)
     delay(2000);
 }
 ```
+
+~~~
+
 ## Arduino Setup
 
 1. Ensure one end of the one cable is secured into the TX connection (Tx->1) on the Arduino, the other end of the cable to be attached to the red oscilloscope crocodile clip. As shown below:
@@ -69,7 +88,9 @@ while(true)
 4. Now you can power on the Arduino with the power adapter provided.  
 
 ## Oscilloscope Setup
+
 Using the oscilloscope, we will be able to capture the randomly generated signal being transmitted from the Arduino.
+
 <p align="center">
   <img alt="Light" src="./figures/Oscilloscope_overview.png" width="45%">
 </p>
@@ -124,19 +145,23 @@ Using the oscilloscope, we will be able to capture the randomly generated signal
 ## Reading the Data
 
 
-1.   You should see a transmitted signal like below:
+13.   You should see a transmitted signal like below:
 
 <p align="center">
   <img alt="Light" src="./figures/Digital_Signal.png" width="80%">
 </p>
 
-15. The Byte shown above is represented as 8 bits of Binary `0` or `1`.  We can then work out proportionally the binary code representation. Remembering to read right to left. The example above is displaying `00100001` .
+14. The Byte shown above is represented as 8 bits of Binary `0` or `1`.  We can then work out proportionally the binary code representation. Remembering to read right to left. The example above is displaying `00100001` .
 
-Remember that: 
+    ~~~admonish tip
 
- - A `0` is represented when the signal is on the 0V line indicated on the screen represented in the left-hand side of the screen
+    Remember that: 
 
- - A `1` is represented as 5V as indicated on the right-hand side of the screen
+    - A `0` is represented when the signal is on the 0V line indicated on the screen represented in the left-hand side of the screen
+
+    - A `1` is represented as 5V as indicated on the right-hand side of the screen
+
+    ~~~
 
 16. Using the ASCII code conversion table you can now identify the character being displayed below once you have converted the binary notation into a decimal number:
 

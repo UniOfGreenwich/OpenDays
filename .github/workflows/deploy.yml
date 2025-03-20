@@ -8,22 +8,43 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup mdBook
-        uses: peaceiris/actions-mdbook@v1
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
-          # mdbook-version: '0.4.10'
-          mdbook-version: 'latest'
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install segno
+
+      - name: Setup mdBook
+        uses: jontze/action-mdbook@v3
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
+          use-toc: true
+          use-admonish: true
+
+      - name: Show mdbook version
+        run: mdbook --version
+      - name: Show toc version
+        run: mdbook-toc --version
+      - name: Show admonish version
+        run: mdbook-admonish --version
+
+      - name: Generate QR code
+        env:
+          REPO_NAME: ${{ github.repository }}
+        run: python .github/qrgen.py
 
       - run: mdbook build
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
