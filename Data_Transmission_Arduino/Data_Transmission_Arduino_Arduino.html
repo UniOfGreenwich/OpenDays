@@ -23,11 +23,16 @@
         <link rel="stylesheet" href="../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
-        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
-        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/css/code.css">
+        <link rel="stylesheet" href=".././theme/css/terminal.css">
+        <link rel="stylesheet" href=".././theme/css/output.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -110,11 +115,18 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="burgundy">Burgundy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="dracula">Dracula</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ecoFriend">EcoFriend</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="pinkrose">Pinkrose</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="space">Space</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="sustain">Sustain</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="tokyonight">Tokyonight</button></li>
                         </ul>
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
@@ -124,6 +136,12 @@
                     <h1 class="menu-title">UoG Computing/Computer/Cybernetics Open Day</h1>
 
                     <div class="right-buttons">
+                        <a href="https://github.com/uniofgreenwich/opendays" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/uniofgreenwich/opendays/edit/main/content/Data_Transmission_Arduino/Data_Transmission_Arduino_Arduino.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
 
                     </div>
                 </div>
@@ -149,10 +167,18 @@
                 </script>
 
                 <div id="content" class="content">
-                    <main>
+                    <main><div class="sidetoc"><nav class="pagetoc"></nav></div>
                         <h1 id="data-communication-over-serial"><a class="header" href="#data-communication-over-serial">Data Communication over Serial</a></h1>
 <p>This document will provide a instructions on how to use the oscilloscope, to read the electrical signal that is being transimitted from the Arduino Uno development board out of the Tx pin.</p>
 <hr />
+<div id="admonition-important" class="admonition admonish-tip" role="note" aria-labelledby="admonition-important-title">
+<div class="admonition-title">
+<div id="admonition-important-title">
+<p>Important</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-important"></a>
+</div>
+<div>
 <p><strong>As a reminder, you are to:</strong></p>
 <ol>
 <li>
@@ -174,26 +200,58 @@
 <p>Reset the Arduino and do it again as many times as you like to get different signals</p>
 </li>
 </ol>
+</div>
+</div>
 <hr />
 <h2 id="code-snippet"><a class="header" href="#code-snippet">Code Snippet</a></h2>
 <p>So you can see what is going on under the hood, the snippet of code below demonstates that all characters are randomly generated from the ASCII table:</p>
 <p>You can see firstly that a random baudrate is selected by creating a random seed from the analogue pin 2 of the Arduino.</p>
+<div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
+<div class="admonition-title">
+<div id="admonition-code-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code"></a>
+</div>
+<div>
 <pre><code class="language-c">randomSeed (analogRead(2));
 Serial.begin(baudRate[random(0,3)]);
 </code></pre>
+</div>
+</div>
 <p>... Next a random symbol is picked from the printable ASCII table.</p>
+<div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
+<div class="admonition-title">
+<div id="admonition-code-1-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-1"></a>
+</div>
+<div>
 <pre><code class="language-c">randomSeed (analogRead(5));
 int startingPos = 33;
 int selectedPos = random(0,94);
 char symbol = (char)(startingPos + selectedPos);
 </code></pre>
+</div>
+</div>
 <p>Finally, the symbol is sent to the Tx pin every 2 secs until you reset the Arduino, which then starts the whole sequence off again.</p>
+<div id="admonition-code-2" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-2-title">
+<div class="admonition-title">
+<div id="admonition-code-2-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-2"></a>
+</div>
+<div>
 <pre><code class="language-c">while(true)
 {
     Serial.print(symbol);
     delay(2000);
 }
 </code></pre>
+</div>
+</div>
 <h2 id="arduino-setup"><a class="header" href="#arduino-setup">Arduino Setup</a></h2>
 <ol>
 <li>
@@ -276,15 +334,23 @@ char symbol = (char)(startingPos + selectedPos);
 <li>When you have positioned your signal to the middle of the screen to show the start and finish of the transmitted character Byte, press the Run/Stop button. This will then capture the signal and will stop flashing in time with the Baud rate, allowing you to calculate the binary representation. This may take a couple of attempts to get the timing right. If this is the case, just press the Run Stop button again and retry.</li>
 </ol>
 <h2 id="reading-the-data"><a class="header" href="#reading-the-data">Reading the Data</a></h2>
-<ol>
+<ol start="13">
 <li>You should see a transmitted signal like below:</li>
 </ol>
 <p align="center">
   <img alt="Light" src="./figures/Digital_Signal.png" width="80%">
 </p>
-<ol start="15">
-<li>The Byte shown above is represented as 8 bits of Binary <code>0</code> or <code>1</code>.  We can then work out proportionally the binary code representation. Remembering to read right to left. The example above is displaying <code>00100001</code> .</li>
-</ol>
+<ol start="14">
+<li>
+<p>The Byte shown above is represented as 8 bits of Binary <code>0</code> or <code>1</code>.  We can then work out proportionally the binary code representation. Remembering to read right to left. The example above is displaying <code>00100001</code> .</p>
+<div id="admonition-tip" class="admonition admonish-tip" role="note" aria-labelledby="admonition-tip-title">
+<div class="admonition-title">
+<div id="admonition-tip-title">
+<p>Tip</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-tip"></a>
+</div>
+<div>
 <p>Remember that:</p>
 <ul>
 <li>
@@ -294,8 +360,12 @@ char symbol = (char)(startingPos + selectedPos);
 <p>A <code>1</code> is represented as 5V as indicated on the right-hand side of the screen</p>
 </li>
 </ul>
-<ol start="16">
-<li>Using the ASCII code conversion table you can now identify the character being displayed below once you have converted the binary notation into a decimal number:</li>
+</div>
+</div>
+</li>
+<li>
+<p>Using the ASCII code conversion table you can now identify the character being displayed below once you have converted the binary notation into a decimal number:</p>
+</li>
 </ol>
 <h2 id="ascii-table"><a class="header" href="#ascii-table">ASCII Table</a></h2>
 <div class="table-wrapper"><table><thead><tr><th>Dec</th><th>Char</th><th>Dec</th><th>Char</th><th>Dec</th><th>Char</th><th>Dec</th><th>Char</th><th>Dec</th><th>Char</th><th>Dec</th><th>Char</th></tr></thead><tbody>
@@ -341,7 +411,6 @@ char symbol = (char)(startingPos + selectedPos);
 <p>Therefore the closet baudrate is \(19200\) which is \(1\ bit\ every\ 52\mu s\)</p>
 
                     </main>
-
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                             <a rel="prev" href="../Introduction.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
@@ -380,6 +449,7 @@ char symbol = (char)(startingPos + selectedPos);
         <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
+        <script src=".././theme/pagetoc.js"></script>
 
 
     </div>
